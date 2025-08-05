@@ -1,11 +1,53 @@
 let originalData = null;
 
-fetch('data/taxonomy.json')
-  .then(response => response.json())
-  .then(data => {
-    originalData = data;
-    renderInteractiveTaxonomy(data);
+document.addEventListener('DOMContentLoaded', function () {
+  fetch('data/taxonomy.json')
+    .then(response => response.json())
+    .then(data => {
+      originalData = data;
+      renderInteractiveTaxonomy(data);
+    });
+
+  document.getElementById('searchInput').addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    if (!query) {
+      renderInteractiveTaxonomy(originalData);
+      return;
+    }
+
+    const filtered = {
+      categories: originalData.categories.map(cat => {
+        const matchedDimensions = cat.dimensions
+          .map(dim => {
+            const filteredChars = dim.characteristics.filter(c =>
+              c.toLowerCase().includes(query)
+            );
+            if (
+              dim.name.toLowerCase().includes(query) ||
+              filteredChars.length > 0
+            ) {
+              return {
+                ...dim,
+                characteristics: filteredChars.length > 0 ? filteredChars : dim.characteristics
+              };
+            }
+            return null;
+          })
+          .filter(Boolean);
+
+        if (
+          cat.name.toLowerCase().includes(query) ||
+          matchedDimensions.length > 0
+        ) {
+          return { ...cat, dimensions: matchedDimensions };
+        }
+        return null;
+      }).filter(Boolean)
+    };
+
+    renderInteractiveTaxonomy(filtered);
   });
+});
 
 function renderInteractiveTaxonomy(taxonomy) {
   const container = document.getElementById('taxonomy-container');
@@ -69,43 +111,3 @@ function renderInteractiveTaxonomy(taxonomy) {
     container.appendChild(catDiv);
   });
 }
-
-document.getElementById('searchInput').addEventListener('input', function () {
-  const query = this.value.toLowerCase();
-  if (!query) {
-    renderInteractiveTaxonomy(originalData);
-    return;
-  }
-
-  const filtered = {
-    categories: originalData.categories.map(cat => {
-      const matchedDimensions = cat.dimensions
-        .map(dim => {
-          const filteredChars = dim.characteristics.filter(c =>
-            c.toLowerCase().includes(query)
-          );
-          if (
-            dim.name.toLowerCase().includes(query) ||
-            filteredChars.length > 0
-          ) {
-            return {
-              ...dim,
-              characteristics: filteredChars.length > 0 ? filteredChars : dim.characteristics
-            };
-          }
-          return null;
-        })
-        .filter(Boolean);
-
-      if (
-        cat.name.toLowerCase().includes(query) ||
-        matchedDimensions.length > 0
-      ) {
-        return { ...cat, dimensions: matchedDimensions };
-      }
-      return null;
-    }).filter(Boolean)
-  };
-
-  renderInteractiveTaxonomy(filtered);
-});
