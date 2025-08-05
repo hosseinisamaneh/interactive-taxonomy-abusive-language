@@ -1,6 +1,9 @@
 let originalData = null;
 
 document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('searchInput');
+  const clearButton = document.getElementById('clearButton');
+
   fetch('data/taxonomy.json')
     .then(response => response.json())
     .then(data => {
@@ -8,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
       renderInteractiveTaxonomy(data);
     });
 
-  document.getElementById('searchInput').addEventListener('input', function () {
+  searchInput.addEventListener('input', function () {
     const query = this.value.toLowerCase();
     if (!query) {
       renderInteractiveTaxonomy(originalData);
@@ -28,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ) {
               return {
                 ...dim,
-                characteristics: filteredChars.length > 0 ? filteredChars : dim.characteristics
+                characteristics: filteredChars.length > 0 ? filteredChars : dim.characteristics,
+                __highlight: query // pass query to highlight
               };
             }
             return null;
@@ -39,17 +43,26 @@ document.addEventListener('DOMContentLoaded', function () {
           cat.name.toLowerCase().includes(query) ||
           matchedDimensions.length > 0
         ) {
-          return { ...cat, dimensions: matchedDimensions };
+          return {
+            ...cat,
+            dimensions: matchedDimensions,
+            __highlight: query // for highlighting
+          };
         }
         return null;
       }).filter(Boolean)
     };
 
-    renderInteractiveTaxonomy(filtered, true);
+    renderInteractiveTaxonomy(filtered, true, query);
+  });
+
+  clearButton.addEventListener('click', () => {
+    searchInput.value = '';
+    renderInteractiveTaxonomy(originalData);
   });
 });
 
-function renderInteractiveTaxonomy(taxonomy, expand = false) {
+function renderInteractiveTaxonomy(taxonomy, expand = false, highlight = '') {
   const container = document.getElementById('taxonomy-container');
   container.innerHTML = ''; // Clear previous content
 
@@ -59,21 +72,17 @@ function renderInteractiveTaxonomy(taxonomy, expand = false) {
 
     const catHeader = document.createElement('div');
     catHeader.className = 'collapsible category-header';
-    catHeader.textContent = cat.name;
-    
+    catHeader.innerHTML = highlightMatch(cat.name, highlight);
     const catContent = document.createElement('div');
     catContent.className = 'content';
-    catContent.style.display = expand ? 'block' : 'none'; // show/hide logic
-    
+    catContent.style.display = expand ? 'block' : 'none';
+
     catHeader.addEventListener('click', () => {
       catHeader.classList.toggle("active");
       catContent.style.display = catContent.style.display === "block" ? "none" : "block";
     });
-    
     if (expand) catHeader.classList.add("active");
     catDiv.appendChild(catHeader);
-
-    catContent.style.display = expand ? 'block' : 'none'; // 👈 show/hide
 
     cat.dimensions.forEach(dim => {
       const dimDiv = document.createElement('div');
@@ -81,26 +90,22 @@ function renderInteractiveTaxonomy(taxonomy, expand = false) {
 
       const dimHeader = document.createElement('div');
       dimHeader.className = 'collapsible dimension-header';
-      dimHeader.textContent = dim.name;
-      
+      dimHeader.innerHTML = highlightMatch(dim.name, highlight);
       const dimContent = document.createElement('div');
       dimContent.className = 'content';
       dimContent.style.display = expand ? 'block' : 'none';
-      
+
       dimHeader.addEventListener('click', () => {
         dimHeader.classList.toggle("active");
         dimContent.style.display = dimContent.style.display === "block" ? "none" : "block";
       });
-      
       if (expand) dimHeader.classList.add("active");
       dimDiv.appendChild(dimHeader);
-
-      dimContent.style.display = expand ? 'block' : 'none'; // 👈 show/hide
 
       const ul = document.createElement('ul');
       dim.characteristics.forEach(char => {
         const li = document.createElement('li');
-        li.textContent = char;
+        li.innerHTML = highlightMatch(char, highlight);
         li.className = 'has-tooltip';
 
         if (dim.definitions && dim.definitions[char]) {
@@ -121,4 +126,10 @@ function renderInteractiveTaxonomy(taxonomy, expand = false) {
     catDiv.appendChild(catContent);
     container.appendChild(catDiv);
   });
+}
+
+function highlightMatch(text, keyword) {
+  if (!keyword) return text;
+  const regex = new RegExp(`(${keyword})`, 'gi');
+  return text.replace(regex, '<span class="highlight">$1</span>');
 }
