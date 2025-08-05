@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.category {
+  border: 1px solid #ccc;
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.dimension {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dimension ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+}
