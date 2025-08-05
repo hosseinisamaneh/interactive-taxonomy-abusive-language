@@ -1,15 +1,20 @@
+let originalData = null;
+
 fetch('data/taxonomy.json')
   .then(response => response.json())
-  .then(data => renderInteractiveTaxonomy(data));
+  .then(data => {
+    originalData = data;
+    renderInteractiveTaxonomy(data);
+  });
 
 function renderInteractiveTaxonomy(taxonomy) {
   const container = document.getElementById('taxonomy-container');
+  container.innerHTML = ''; // Clear previous content
 
   taxonomy.categories.forEach(cat => {
     const catDiv = document.createElement('div');
     catDiv.className = 'category';
 
-    // Create collapsible category title
     const catHeader = document.createElement('div');
     catHeader.className = 'collapsible category-header';
     catHeader.textContent = cat.name;
@@ -26,7 +31,6 @@ function renderInteractiveTaxonomy(taxonomy) {
       const dimDiv = document.createElement('div');
       dimDiv.className = 'dimension';
 
-      // Create collapsible dimension header
       const dimHeader = document.createElement('div');
       dimHeader.className = 'collapsible dimension-header';
       dimHeader.textContent = dim.name;
@@ -36,7 +40,6 @@ function renderInteractiveTaxonomy(taxonomy) {
       });
       dimDiv.appendChild(dimHeader);
 
-      // Characteristics list
       const dimContent = document.createElement('div');
       dimContent.className = 'content';
 
@@ -44,6 +47,16 @@ function renderInteractiveTaxonomy(taxonomy) {
       dim.characteristics.forEach(char => {
         const li = document.createElement('li');
         li.textContent = char;
+        li.className = 'has-tooltip';
+
+        // Tooltip span
+        if (dim.definitions && dim.definitions[char]) {
+          const tooltip = document.createElement('span');
+          tooltip.className = 'tooltip';
+          tooltip.textContent = dim.definitions[char];
+          li.appendChild(tooltip);
+        }
+
         ul.appendChild(li);
       });
 
@@ -56,3 +69,43 @@ function renderInteractiveTaxonomy(taxonomy) {
     container.appendChild(catDiv);
   });
 }
+
+document.getElementById('searchInput').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  if (!query) {
+    renderInteractiveTaxonomy(originalData);
+    return;
+  }
+
+  const filtered = {
+    categories: originalData.categories.map(cat => {
+      const matchedDimensions = cat.dimensions
+        .map(dim => {
+          const filteredChars = dim.characteristics.filter(c =>
+            c.toLowerCase().includes(query)
+          );
+          if (
+            dim.name.toLowerCase().includes(query) ||
+            filteredChars.length > 0
+          ) {
+            return {
+              ...dim,
+              characteristics: filteredChars.length > 0 ? filteredChars : dim.characteristics
+            };
+          }
+          return null;
+        })
+        .filter(Boolean);
+
+      if (
+        cat.name.toLowerCase().includes(query) ||
+        matchedDimensions.length > 0
+      ) {
+        return { ...cat, dimensions: matchedDimensions };
+      }
+      return null;
+    }).filter(Boolean)
+  };
+
+  renderInteractiveTaxonomy(filtered);
+});
