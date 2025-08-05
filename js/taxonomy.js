@@ -45,11 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }).filter(Boolean)
     };
 
-    renderInteractiveTaxonomy(filtered);
+    renderInteractiveTaxonomy(filtered, true);
   });
 });
 
-function renderInteractiveTaxonomy(taxonomy) {
+function renderInteractiveTaxonomy(taxonomy, expand = false) {
   const container = document.getElementById('taxonomy-container');
   container.innerHTML = ''; // Clear previous content
 
@@ -64,10 +64,12 @@ function renderInteractiveTaxonomy(taxonomy) {
       catHeader.classList.toggle("active");
       catContent.style.display = catContent.style.display === "block" ? "none" : "block";
     });
+    if (expand) catHeader.classList.add("active"); // 👈 expanded
     catDiv.appendChild(catHeader);
 
     const catContent = document.createElement('div');
     catContent.className = 'content';
+    catContent.style.display = expand ? 'block' : 'none'; // 👈 show/hide
 
     cat.dimensions.forEach(dim => {
       const dimDiv = document.createElement('div');
@@ -80,10 +82,12 @@ function renderInteractiveTaxonomy(taxonomy) {
         dimHeader.classList.toggle("active");
         dimContent.style.display = dimContent.style.display === "block" ? "none" : "block";
       });
+      if (expand) dimHeader.classList.add("active"); // 👈 expanded
       dimDiv.appendChild(dimHeader);
 
       const dimContent = document.createElement('div');
       dimContent.className = 'content';
+      dimContent.style.display = expand ? 'block' : 'none'; // 👈 show/hide
 
       const ul = document.createElement('ul');
       dim.characteristics.forEach(char => {
@@ -91,7 +95,6 @@ function renderInteractiveTaxonomy(taxonomy) {
         li.textContent = char;
         li.className = 'has-tooltip';
 
-        // Tooltip span
         if (dim.definitions && dim.definitions[char]) {
           const tooltip = document.createElement('span');
           tooltip.className = 'tooltip';
