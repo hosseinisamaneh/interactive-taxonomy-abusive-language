@@ -60,15 +60,19 @@ function renderInteractiveTaxonomy(taxonomy, expand = false) {
     const catHeader = document.createElement('div');
     catHeader.className = 'collapsible category-header';
     catHeader.textContent = cat.name;
+    
+    const catContent = document.createElement('div');
+    catContent.className = 'content';
+    catContent.style.display = expand ? 'block' : 'none'; // show/hide logic
+    
     catHeader.addEventListener('click', () => {
       catHeader.classList.toggle("active");
       catContent.style.display = catContent.style.display === "block" ? "none" : "block";
     });
-    if (expand) catHeader.classList.add("active"); // 👈 expanded
+    
+    if (expand) catHeader.classList.add("active");
     catDiv.appendChild(catHeader);
 
-    const catContent = document.createElement('div');
-    catContent.className = 'content';
     catContent.style.display = expand ? 'block' : 'none'; // 👈 show/hide
 
     cat.dimensions.forEach(dim => {
