@@ -82,15 +82,19 @@ function renderInteractiveTaxonomy(taxonomy, expand = false) {
       const dimHeader = document.createElement('div');
       dimHeader.className = 'collapsible dimension-header';
       dimHeader.textContent = dim.name;
+      
+      const dimContent = document.createElement('div');
+      dimContent.className = 'content';
+      dimContent.style.display = expand ? 'block' : 'none';
+      
       dimHeader.addEventListener('click', () => {
         dimHeader.classList.toggle("active");
         dimContent.style.display = dimContent.style.display === "block" ? "none" : "block";
       });
-      if (expand) dimHeader.classList.add("active"); // 👈 expanded
+      
+      if (expand) dimHeader.classList.add("active");
       dimDiv.appendChild(dimHeader);
 
-      const dimContent = document.createElement('div');
-      dimContent.className = 'content';
       dimContent.style.display = expand ? 'block' : 'none'; // 👈 show/hide
 
       const ul = document.createElement('ul');
