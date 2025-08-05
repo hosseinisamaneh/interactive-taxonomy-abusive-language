@@ -21,7 +21,7 @@ It is:
 
 ## 🌐 View it live
 
-You can view the interactive taxonomy here: **[https://hosseinisamaneh.github.io/interactive-taxonomy-abusive-language/]**
+You can view the interactive taxonomy here: **https://hosseinisamaneh.github.io/interactive-taxonomy-abusive-language/**
 
 ## 📁 Structure
 
