@@ -73,3 +73,31 @@ ul {
   visibility: visible;
   opacity: 1;
 }
+
+#search-bar {
+  margin-bottom: 20px;
+}
+
+#search-bar input {
+  padding: 8px;
+  width: 300px;
+  font-size: 1em;
+}
+
+#search-bar button {
+  padding: 8px 12px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* Search highlight */
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+/* Expand animation */
+.content {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
