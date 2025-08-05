@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "name": "Context of Abuse",
+      "dimensions": [
+        { "name": "Temporal Context", "characteristics": ["Immediate", "Historical", "Ongoing"] },
+        { "name": "Platform", "characteristics": ["Social Media", "News Site", "Forum", "Other"] }
+      ]
+    },
+    {
+      "name": "Target of Abuse",
+      "dimensions": [
+        { "name": "Target Identity", "characteristics": ["Individual", "Group", "Public Figure", "Unspecified"] },
+        { "name": "Vulnerability Status", "characteristics": ["Minor", "Disabled", "Marginalized", "None"] }
+      ]
+    },
+    {
+      "name": "Intensity of Abuse",
+      "dimensions": [
+        { "name": "Severity", "characteristics": ["Mild", "Moderate", "Severe"] },
+        { "name": "Frequency", "characteristics": ["Once", "Repeated", "Chronic"] }
+      ]
+    },
+    {
+      "name": "Directness of Abuse",
+      "dimensions": [
+        { "name": "Form", "characteristics": ["Direct", "Indirect", "Implied"] },
+        { "name": "Target Reference", "characteristics": ["Named", "Generic", "Group"] }
+      ]
+    },
+    {
+      "name": "Theme of Abuse",
+      "dimensions": [
+        { "name": "Type", "characteristics": ["Racist", "Sexist", "Political", "Religious", "Other"] },
+        { "name": "Tone", "characteristics": ["Sarcastic", "Aggressive", "Neutral", "Supportive"] }
+      ]
+    }
+  ]
+}
