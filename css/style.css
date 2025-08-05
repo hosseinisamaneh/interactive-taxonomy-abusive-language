@@ -10,21 +10,39 @@ h1 {
   margin-bottom: 2rem;
 }
 
-.category {
-  border: 1px solid #ccc;
-  background: white;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-}
-
-.dimension {
-  margin-left: 1rem;
+.category, .dimension {
   margin-bottom: 1rem;
 }
 
-.dimension ul {
-  list-style-type: disc;
-  margin-left: 2rem;
+.collapsible {
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.category-header {
+  background-color: #dfe6e9;
+}
+
+.dimension-header {
+  background-color: #ffeaa7;
+  margin-left: 20px;
+}
+
+.collapsible.active {
+  background-color: #b2bec3;
+}
+
+.content {
+  display: none;
+  padding: 0 20px;
+}
+
+ul {
+  margin: 5px 0 10px 20px;
 }
