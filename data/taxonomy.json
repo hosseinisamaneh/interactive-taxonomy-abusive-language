@@ -66,6 +66,21 @@
               "name": "Theme",
               "dimensions": [
                 {
+                  "name": "Religion",
+                  "characteristics": [
+                    "Christianity",
+                    "Islam",
+                    "Hinduism",
+                    "Buddhism",
+                    "Sikhism",
+                    "Judaism",
+                    "Atheist/Agnostic",
+                    "Other Minorities",
+                    "U",
+                    "I"
+                  ]
+                },
+                {
                   "name": "Gender",
                   "characteristics": [
                     "Women",
@@ -76,19 +91,6 @@
                     "Trans.",
                     "Unspecified",
                     "Other Gender Minorities",
-                    "U",
-                    "I"
-                  ]
-                },
-                {
-                  "name": "Age",
-                  "characteristics": [
-                    "Children",
-                    "Teens",
-                    "Young Adults",
-                    "Middle Aged",
-                    "Seniors",
-                    "Other",
                     "U",
                     "I"
                   ]
@@ -112,30 +114,22 @@
                     "I"
                   ]
                 },
-                {
-                  "name": "Disability",
+                 {
+                  "name": "National Origin",
                   "characteristics": [
-                    "Physical",
-                    "Brain Disorder",
-                    "Visually",
-                    "Hearing",
-                    "Unspecified",
-                    "Other",
                     "U",
                     "I"
                   ]
                 },
-                {
-                  "name": "Religion",
+                 {
+                  "name": "Immigration Status",
                   "characteristics": [
-                    "Christianity",
-                    "Islam",
-                    "Hinduism",
-                    "Buddhism",
-                    "Sikhism",
-                    "Judaism",
-                    "Atheist/Agnostic",
-                    "Other Minorities",
+                    "Immigrants",
+                    "Workers",
+                    "Undocumented",
+                    "Refugees",
+                    "Asylum",
+                    "Other",
                     "U",
                     "I"
                   ]
@@ -154,7 +148,49 @@
                   ]
                 },
                 {
-                  "name": "Political Affiliation",
+                  "name": "Age",
+                  "characteristics": [
+                    "Children",
+                    "Teens",
+                    "Young Adults",
+                    "Middle Aged",
+                    "Seniors",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
+                },
+                {
+                  "name": "Disability",
+                  "characteristics": [
+                    "Physical",
+                    "Brain Disorder",
+                    "Visually",
+                    "Hearing",
+                    "Unspecified",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
+                },
+                {
+                  "name": "Appearance",
+                  "characteristics": [
+                    "Weight",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
+                },
+                {
+                  "name": "Profession",
+                  "characteristics": [
+                    "U",
+                    "I"
+                  ]
+                },
+                {
+                  "name": "Political Inclination",
                   "characteristics": [
                     "Conservatives",
                     "Democrats",
@@ -173,28 +209,6 @@
                     "U",
                     "I"
                   ]
-                },
-                {
-                  "name": "Immigration Status",
-                  "characteristics": [
-                    "Immigrants",
-                    "Workers",
-                    "Undocumented",
-                    "Refugees",
-                    "Asylum",
-                    "Other",
-                    "U",
-                    "I"
-                  ]
-                },
-                {
-                  "name": "Appearance",
-                  "characteristics": [
-                    "Weight",
-                    "Other",
-                    "U",
-                    "I"
-                  ]
                 }
               ]
             }
@@ -204,17 +218,9 @@
         {
           "name": "Non-abusive",
           "dimensions": [],
-          "subcategories": [
-            {
-              "name": "Non-hateful Slur"
-            },
-            {
-              "name": "Neutral"
-            },
-            {
-              "name": "Supportive"
-            }
-          ]
+          "subcategories": ["Non-hateful Slur", 
+                            "Neutral",
+                            "Supportive"]
         }
       ]
     }
