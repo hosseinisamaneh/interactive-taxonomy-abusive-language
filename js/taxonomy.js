@@ -1,3 +1,8 @@
+// Updated taxonomy.js to support:
+// - subcharacteristics within characteristics
+// - nested dimensions
+// - subcategories
+
 let originalData = null;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -50,16 +55,28 @@ document.addEventListener('DOMContentLoaded', function () {
 function filterDimensions(dimensions, query) {
   return dimensions
     .map(dim => {
-      const filteredChars = dim.characteristics.filter(c =>
-        c.toLowerCase().includes(query)
-      );
+      const filteredChars = dim.characteristics.filter(c => {
+        if (typeof c === 'string') return c.toLowerCase().includes(query);
+        if (typeof c === 'object') {
+          return (
+            c.name.toLowerCase().includes(query) ||
+            (c.subcharacteristics || []).some(sc => sc.toLowerCase().includes(query))
+          );
+        }
+        return false;
+      });
+
+      const filteredSubDims = (dim.dimensions || []).length > 0 ? filterDimensions(dim.dimensions, query) : [];
+
       if (
         dim.name.toLowerCase().includes(query) ||
-        filteredChars.length > 0
+        filteredChars.length > 0 ||
+        filteredSubDims.length > 0
       ) {
         return {
           ...dim,
-          characteristics: filteredChars.length > 0 ? filteredChars : dim.characteristics
+          characteristics: filteredChars,
+          dimensions: filteredSubDims
         };
       }
       return null;
@@ -112,24 +129,19 @@ function createCategoryElement(cat, expand, highlight) {
   catContent.style.display = expand ? 'block' : 'none';
 
   catHeader.addEventListener('click', () => {
-    catHeader.classList.toggle("active");
-    catContent.style.display = catContent.style.display === "block" ? "none" : "block";
+    catHeader.classList.toggle('active');
+    catContent.style.display = catContent.style.display === 'block' ? 'none' : 'block';
   });
 
-  if (expand) catHeader.classList.add("active");
-
+  if (expand) catHeader.classList.add('active');
   catDiv.appendChild(catHeader);
 
-  // Render dimensions
   (cat.dimensions || []).forEach(dim => {
-    const dimDiv = createDimensionElement(dim, expand, highlight);
-    catContent.appendChild(dimDiv);
+    catContent.appendChild(createDimensionElement(dim, expand, highlight));
   });
 
-  // Render subcategories recursively
   (cat.subcategories || []).forEach(sub => {
-    const subDiv = createCategoryElement(sub, expand, highlight);
-    catContent.appendChild(subDiv);
+    catContent.appendChild(createCategoryElement(sub, expand, highlight));
   });
 
   catDiv.appendChild(catContent);
@@ -149,36 +161,45 @@ function createDimensionElement(dim, expand, highlight) {
   dimContent.style.display = expand ? 'block' : 'none';
 
   dimHeader.addEventListener('click', () => {
-    dimHeader.classList.toggle("active");
-    dimContent.style.display = dimContent.style.display === "block" ? "none" : "block";
+    dimHeader.classList.toggle('active');
+    dimContent.style.display = dimContent.style.display === 'block' ? 'none' : 'block';
   });
 
-  if (expand) dimHeader.classList.add("active");
+  if (expand) dimHeader.classList.add('active');
+  dimDiv.appendChild(dimHeader);
 
   const ul = document.createElement('ul');
   dim.characteristics.forEach(char => {
     const li = document.createElement('li');
-    li.innerHTML = highlightMatch(char, highlight);
-    li.className = 'has-tooltip';
 
-    if (dim.definitions && dim.definitions[char]) {
-      const tooltip = document.createElement('span');
-      tooltip.className = 'tooltip';
-      tooltip.textContent = dim.definitions[char];
-      li.appendChild(tooltip);
+    if (typeof char === 'string') {
+      li.innerHTML = highlightMatch(char, highlight);
+    } else if (typeof char === 'object' && char.name) {
+      li.innerHTML = highlightMatch(char.name, highlight);
+      const subUl = document.createElement('ul');
+      (char.subcharacteristics || []).forEach(sub => {
+        const subLi = document.createElement('li');
+        subLi.innerHTML = highlightMatch(sub, highlight);
+        subUl.appendChild(subLi);
+      });
+      li.appendChild(subUl);
     }
 
     ul.appendChild(li);
   });
 
   dimContent.appendChild(ul);
-  dimDiv.appendChild(dimHeader);
+
+  (dim.dimensions || []).forEach(subDim => {
+    dimContent.appendChild(createDimensionElement(subDim, expand, highlight));
+  });
+
   dimDiv.appendChild(dimContent);
   return dimDiv;
 }
 
 function highlightMatch(text, keyword) {
-  if (!keyword) return text;
+  if (!keyword || typeof text !== 'string') return text;
   const regex = new RegExp(`(${keyword})`, 'gi');
   return text.replace(regex, '<span class="highlight">$1</span>');
 }
