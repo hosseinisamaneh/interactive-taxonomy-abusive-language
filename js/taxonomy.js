@@ -190,10 +190,11 @@ function createDimensionElement(dim, expand, highlight) {
 
   dimContent.appendChild(ul);
 
-  (dim.dimensions || []).forEach(subDim => {
-    dimContent.appendChild(createDimensionElement(subDim, expand, highlight));
-  });
-
+  if (Array.isArray(dim.dimensions)) {
+    (dim.dimensions || []).forEach(subDim => {
+      dimContent.appendChild(createDimensionElement(subDim, expand, highlight));
+    });
+  }
   dimDiv.appendChild(dimContent);
   return dimDiv;
 }
