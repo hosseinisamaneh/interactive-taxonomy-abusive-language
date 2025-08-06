@@ -44,19 +44,23 @@
             },
             {
               "name": "Intensity",
-              "dimensions": [
-                {
-                  "name": "Level",
-                  "characteristics": [
-                    "Mild",
-                    "Moderate",
-                    "Severe",
-                    "Extreme",
-                    "U",
-                    "I"
-                  ]
-                }
-              ]
+              "characteristics": [
+                  {
+                    "name": "Threat of Physical Harm",
+                    "subcharacteristics": [
+                      "Threatening",
+                      "Glorification"
+                    ]
+                  },
+                  {
+                    "name": "Verbal Abuse",
+                    "subcharacteristics": [
+                      "Dehumanization",
+                      "Hostility",
+                      "Derogation"
+                    ]
+                  }
+                ]
             },
             {
               "name": "Theme",
