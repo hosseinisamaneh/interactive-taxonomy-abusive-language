@@ -169,7 +169,7 @@ function createDimensionElement(dim, expand, highlight) {
   dimDiv.appendChild(dimHeader);
 
   const ul = document.createElement('ul');
-  dim.characteristics.forEach(char => {
+(dim.characteristics || []).forEach(char => {
     const li = document.createElement('li');
 
     if (typeof char === 'string') {
