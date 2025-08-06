@@ -5,11 +5,17 @@
       "dimensions": [
         {
           "name": "Context",
-          "characteristics": ["Original Post", {
-            "name":"Reaction",
-            "dimensions": [],
-          "subcategories": ["To Abusive", "To Non=abusive", "To Counter Hate"]
-          }]
+          "characteristics": [
+            "Original Post",
+            {
+              "name": "Reaction",
+              "subcharacteristics": [
+                "To Abusive",
+                "To Non-abusive",
+                "To Counter Hate"
+              ]
+            }
+          ]
         }
       ],
       "subcategories": [
