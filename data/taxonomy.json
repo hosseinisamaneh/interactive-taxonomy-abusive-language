@@ -5,7 +5,11 @@
       "dimensions": [
         {
           "name": "Context",
-          "characteristics": ["Abusive", "Non-abusive"]
+          "characteristics": ["Original Post", {
+            "name":"Reaction",
+            "dimensions": [],
+          "subcategories": ["To Abusive", "To Non=abusive", "To Counter Hate"]
+          }]
         }
       ],
       "subcategories": [
@@ -71,7 +75,7 @@
                 },
                 {
                   "name": "Hate Form",
-                  "characteristics": ["Non-hateful", "Slur", "Dehumanization", "Threatening", "Glorification", "Derogation", "Hostility"]
+                  "characteristics": ["Dehumanization", "Threatening", "Glorification", "Derogation", "Hostility"]
                 }
               ]
             },
@@ -98,7 +102,7 @@
         {
           "name": "Non-abusive",
           "dimensions": [],
-          "subcategories": []
+          "subcategories": ["Non-hateful Slur", "Neutral", "Supportive"]
         }
       ]
     }
