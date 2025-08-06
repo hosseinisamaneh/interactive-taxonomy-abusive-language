@@ -1,121 +1,104 @@
 {
   "categories": [
     {
-      "name": "Context",
+      "name": "Text",
       "dimensions": [
         {
-          "name": "Abusiveness",
-          "characteristics": ["Abusive", "Non-abusive", "Neutral", "Supportive"]
-        },
-        {
-          "name": "Response Type",
-          "characteristics": ["Original Post", "Reaction", "To Abusive", "To Non-abusive", "To Counter Hate"]
+          "name": "Context",
+          "characteristics": ["Abusive", "Non-abusive"]
         }
-      ]
-    },
-    {
-      "name": "Target",
-      "dimensions": [
+      ],
+      "subcategories": [
         {
-          "name": "Target Type",
-          "characteristics": ["Individual", "Group", "To the Author", "About a Person"]
-        },
-        {
-          "name": "Gender",
-          "characteristics": [
-            "Women", "Men", "Non-binary", "Trans. Men", "Trans. Women",
-            "Trans.", "Unspecified", "Other Gender Minorities", "U", "I"
+          "name": "Abusive",
+          "dimensions": [],
+          "subcategories": [
+            {
+              "name": "Target",
+              "dimensions": [
+                {
+                  "name": "Target Type",
+                  "characteristics": ["Individual", "Group", "To the Author", "About a Person"]
+                },
+                {
+                  "name": "Gender",
+                  "characteristics": ["Women", "Men", "Non-binary", "Trans. Men", "Trans. Women", "Trans.", "Unspecified", "Other Gender Minorities", "U", "I"]
+                },
+                {
+                  "name": "Age",
+                  "characteristics": ["Children", "Teens", "Young Adults", "Middle Aged", "Seniors", "Other", "U", "I"]
+                },
+                {
+                  "name": "Race",
+                  "characteristics": ["Asian", "Asian.East", "Asian.South", "White", "Travellers", "Black", "Hispanic", "Middle Eastern", "Indigenous", "Pacific Islander", "Mixed", "Other Minorities", "U", "I"]
+                },
+                {
+                  "name": "Disability",
+                  "characteristics": ["Physical", "Brain Disorder", "Visually", "Hearing", "Unspecified", "Other", "U", "I"]
+                },
+                {
+                  "name": "Religion",
+                  "characteristics": ["Christianity", "Islam", "Hinduism", "Buddhism", "Sikhism", "Judaism", "Atheist/Agnostic", "Other Minorities", "U", "I"]
+                },
+                {
+                  "name": "Sexuality",
+                  "characteristics": ["Bisexual", "Homosexual", "Gay", "Lesbian", "Straight", "Other", "U", "I"]
+                },
+                {
+                  "name": "Political Affiliation",
+                  "characteristics": ["Conservatives", "Democrats", "BIP", "INC", "Others", "U", "I"]
+                },
+                {
+                  "name": "Socio-economic",
+                  "characteristics": ["Poor", "Millionaire and Billionaire", "U", "I"]
+                },
+                {
+                  "name": "Immigration Status",
+                  "characteristics": ["Immigrants", "Workers", "Undocumented", "Refugees", "Asylum", "Other", "U", "I"]
+                },
+                {
+                  "name": "Appearance",
+                  "characteristics": ["Weight", "Other", "U", "I"]
+                }
+              ]
+            },
+            {
+              "name": "Directness",
+              "dimensions": [
+                {
+                  "name": "Form",
+                  "characteristics": ["Implicit", "Explicit"]
+                },
+                {
+                  "name": "Hate Form",
+                  "characteristics": ["Non-hateful", "Slur", "Dehumanization", "Threatening", "Glorification", "Derogation", "Hostility"]
+                }
+              ]
+            },
+            {
+              "name": "Intensity",
+              "dimensions": [
+                {
+                  "name": "Level",
+                  "characteristics": ["Mild", "Moderate", "Severe", "Extreme", "U", "I"]
+                }
+              ]
+            },
+            {
+              "name": "Theme",
+              "dimensions": [
+                {
+                  "name": "Type",
+                  "characteristics": ["Threat Of", "Physical Harm", "Verbal Abuse", "Immigration Status", "Appearance", "Political Inclination", "Profession", "Socio-economic", "Sexuality", "Disability", "National Origin", "Religion", "Gender", "Race", "Age", "U", "I"]
+                }
+              ]
+            }
           ]
         },
         {
-          "name": "Age",
-          "characteristics": [
-            "Children", "Teens", "Young Adults", "Middle Aged", "Seniors",
-            "Other", "U", "I"
-          ]
-        },
-        {
-          "name": "Race",
-          "characteristics": [
-            "Asian", "Asian.East", "Asian.South", "White", "Travellers",
-            "Black", "Hispanic", "Middle Eastern", "Indigenous",
-            "Pacific Islander", "Mixed", "Other Minorities", "U", "I"
-          ]
-        },
-        {
-          "name": "Disability",
-          "characteristics": [
-            "Physical", "Brain Disorder", "Visually", "Hearing",
-            "Unspecified", "Other", "U", "I"
-          ]
-        },
-        {
-          "name": "Religion",
-          "characteristics": [
-            "Christianity", "Islam", "Hinduism", "Buddhism", "Sikhism",
-            "Judaism", "Atheist/Agnostic", "Other Minorities", "U", "I"
-          ]
-        },
-        {
-          "name": "Sexuality",
-          "characteristics": [
-            "Bisexual", "Homosexual", "Gay", "Lesbian", "Straight",
-            "Other", "U", "I"
-          ]
-        },
-        {
-          "name": "Political Affiliation",
-          "characteristics": ["Conservatives", "Democrats", "BIP", "INC", "Others", "U", "I"]
-        },
-        {
-          "name": "Socio-economic",
-          "characteristics": ["Poor", "Millionaire and Billionaire", "U", "I"]
-        },
-        {
-          "name": "Immigration Status",
-          "characteristics": [
-            "Immigrants", "Workers", "Undocumented", "Refugees",
-            "Asylum", "Other", "U", "I"
-          ]
-        },
-        {
-          "name": "Appearance",
-          "characteristics": ["Weight", "Other", "U", "I"]
-        }
-      ]
-    },
-    {
-      "name": "Directness",
-      "dimensions": [
-        {
-          "name": "Form",
-          "characteristics": ["Implicit", "Explicit"]
-        },
-        {
-          "name": "Hate Form",
-          "characteristics": ["Non-hateful", "Slur", "Dehumanization", "Threatening", "Glorification", "Derogation", "Hostility"]
-        }
-      ]
-    },
-    {
-      "name": "Intensity",
-      "dimensions": [
-        {
-          "name": "Level",
-          "characteristics": ["Mild", "Moderate", "Severe", "Extreme", "U", "I"]
-        }
-      ]
-    },
-    {
-      "name": "Topic",
-      "dimensions": [
-        {
-          "name": "Type",
-          "characteristics": [
-            "Threat Of", "Physical Harm", "Verbal Abuse", "Immigration Status",
-            "Appearance", "Political Inclination", "Profession", "Socio-economic",
-            "Sexuality", "Disability", "National Origin", "Religion", "Gender", "Race", "Age", "U", "I"
-          ]
+          "name": "Non-abusive",
+          "dimensions": [],
+          "subcategories": []
         }
       ]
     }
