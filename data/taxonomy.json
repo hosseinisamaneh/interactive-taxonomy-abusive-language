@@ -218,9 +218,17 @@
         {
           "name": "Non-abusive",
           "dimensions": [],
-          "subcategories": ["Non-hateful Slur", 
-                            "Neutral",
-                            "Supportive"]
+          "subcategories": [
+            {
+              "name": "Non-hateful Slur"
+            },
+            {
+              "name": "Neutral"
+            },
+            {
+              "name": "Supportive"
+            }
+          ]
         }
       ]
     }
