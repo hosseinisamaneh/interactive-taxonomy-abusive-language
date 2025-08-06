@@ -21,7 +21,6 @@
       "subcategories": [
         {
           "name": "Abusive",
-          "subcategories": [],
           "dimensions": [
             {
               "name": "Target",
@@ -29,20 +28,33 @@
                 "Individual",
                 {
                   "name": "Group",
-                  "subcharacteristics": ["To the Author", "About a Person"]
+                  "subcharacteristics": [
+                    "To the Author",
+                    "About a Person"
+                  ]
                 }
               ]
             },
             {
               "name": "Directness",
-              "characteristics": ["Implicit", "Explicit"]
+              "characteristics": [
+                "Implicit",
+                "Explicit"
+              ]
             },
             {
               "name": "Intensity",
               "dimensions": [
                 {
                   "name": "Level",
-                  "characteristics": ["Mild", "Moderate", "Severe", "Extreme", "U", "I"]
+                  "characteristics": [
+                    "Mild",
+                    "Moderate",
+                    "Severe",
+                    "Extreme",
+                    "U",
+                    "I"
+                  ]
                 }
               ]
             },
@@ -51,47 +63,139 @@
               "dimensions": [
                 {
                   "name": "Gender",
-                  "characteristics": ["Women", "Men", "Non-binary", "Trans. Men", "Trans. Women", "Trans.", "Unspecified", "Other Gender Minorities", "U", "I"]
+                  "characteristics": [
+                    "Women",
+                    "Men",
+                    "Non-binary",
+                    "Trans. Men",
+                    "Trans. Women",
+                    "Trans.",
+                    "Unspecified",
+                    "Other Gender Minorities",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Age",
-                  "characteristics": ["Children", "Teens", "Young Adults", "Middle Aged", "Seniors", "Other", "U", "I"]
+                  "characteristics": [
+                    "Children",
+                    "Teens",
+                    "Young Adults",
+                    "Middle Aged",
+                    "Seniors",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Race",
-                  "characteristics": ["Asian", "Asian.East", "Asian.South", "White", "Travellers", "Black", "Hispanic", "Middle Eastern", "Indigenous", "Pacific Islander", "Mixed", "Other Minorities", "U", "I"]
+                  "characteristics": [
+                    "Asian",
+                    "Asian.East",
+                    "Asian.South",
+                    "White",
+                    "Travellers",
+                    "Black",
+                    "Hispanic",
+                    "Middle Eastern",
+                    "Indigenous",
+                    "Pacific Islander",
+                    "Mixed",
+                    "Other Minorities",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Disability",
-                  "characteristics": ["Physical", "Brain Disorder", "Visually", "Hearing", "Unspecified", "Other", "U", "I"]
+                  "characteristics": [
+                    "Physical",
+                    "Brain Disorder",
+                    "Visually",
+                    "Hearing",
+                    "Unspecified",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Religion",
-                  "characteristics": ["Christianity", "Islam", "Hinduism", "Buddhism", "Sikhism", "Judaism", "Atheist/Agnostic", "Other Minorities", "U", "I"]
+                  "characteristics": [
+                    "Christianity",
+                    "Islam",
+                    "Hinduism",
+                    "Buddhism",
+                    "Sikhism",
+                    "Judaism",
+                    "Atheist/Agnostic",
+                    "Other Minorities",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Sexuality",
-                  "characteristics": ["Bisexual", "Homosexual", "Gay", "Lesbian", "Straight", "Other", "U", "I"]
+                  "characteristics": [
+                    "Bisexual",
+                    "Homosexual",
+                    "Gay",
+                    "Lesbian",
+                    "Straight",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Political Affiliation",
-                  "characteristics": ["Conservatives", "Democrats", "BIP", "INC", "Others", "U", "I"]
+                  "characteristics": [
+                    "Conservatives",
+                    "Democrats",
+                    "BIP",
+                    "INC",
+                    "Others",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Socio-economic",
-                  "characteristics": ["Poor", "Millionaire and Billionaire", "U", "I"]
+                  "characteristics": [
+                    "Poor",
+                    "Millionaire and Billionaire",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Immigration Status",
-                  "characteristics": ["Immigrants", "Workers", "Undocumented", "Refugees", "Asylum", "Other", "U", "I"]
+                  "characteristics": [
+                    "Immigrants",
+                    "Workers",
+                    "Undocumented",
+                    "Refugees",
+                    "Asylum",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
                 },
                 {
                   "name": "Appearance",
-                  "characteristics": ["Weight", "Other", "U", "I"]
+                  "characteristics": [
+                    "Weight",
+                    "Other",
+                    "U",
+                    "I"
+                  ]
                 }
               ]
             }
-          ]
+          ],
+          "subcategories": []
         },
         {
           "name": "Non-abusive",
