@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.json())
     .then(data => {
       originalData = data;
-      renderInteractiveTaxonomy(data);
+      renderInteractiveTaxonomy(data, true);
     });
 
   searchInput.addEventListener('input', function () {
@@ -141,7 +141,7 @@ function createCategoryElement(cat, expand, highlight) {
   });
 
   (cat.subcategories || []).forEach(sub => {
-    catContent.appendChild(createCategoryElement(sub, expand, highlight));
+    catContent.appendChild(createCategoryElement(sub, false, highlight));
   });
 
   catDiv.appendChild(catContent);
