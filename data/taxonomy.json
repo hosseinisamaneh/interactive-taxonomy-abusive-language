@@ -1,7 +1,7 @@
 {
   "categories": [
     {
-      "name": "Text",
+      "name": "Text to Classify",
       "dimensions": [
         {
           "name": "Context",
