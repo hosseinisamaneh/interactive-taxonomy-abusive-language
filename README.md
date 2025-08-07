@@ -4,7 +4,7 @@ This repository hosts an **interactive, browser-based taxonomy** for online abus
 
 > **"Towards a comprehensive taxonomy of online abusive language informed by machine learning"**
 
-## 🧠 What is this?
+## 🔍 What is this?
 
 The taxonomy categorizes online abuse based on:
 - **Context**
@@ -30,7 +30,7 @@ You can view the interactive taxonomy here: **https://hosseinisamaneh.github.io/
 - `js/taxonomy.js` – Renders taxonomy dynamically
 - `css/styles.css` – Basic layout and design
 
-## 🚀 How to Use
+## 🔦 How to Use
 
 1. Clone or fork this repo.
 2. Add or update the JSON under `/data`.
